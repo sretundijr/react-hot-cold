@@ -21,6 +21,9 @@ describe(<InfoModal />, () => {
   });
 
   it('should fire a click event', () => {
-    wrapper.find('.close').simulate('click', { preventDefault() { } });
+    const callback = jest.fn();
+    const wrapper1 = shallow(<InfoModal onClose={callback} />);
+    wrapper1.find('.close').simulate('click', { preventDefault() { } });
+    expect(callback).toHaveBeenCalled();
   });
 });
